@@ -309,7 +309,7 @@ notebook.add(tab1, text="Add One Log")
 fields = ["card_num", "exp", "cvv", "first_name", "last_name", "address", "city", "state", "zip"]
 entries = {}
 for i, field in enumerate(fields):
-    ttk.Label(tab1, text=f"{field.replace('_', ' ').title()}:", tooltip=f"Enter {field.replace('_', ' ')}").grid(row=i, column=0, padx=5, pady=5)
+    ttk.Label(tab1, text=f"{field.replace('_', ' ').title()}:").grid(row=i, column=0, padx=5, pady=5)
     entries[field] = ttk.Entry(tab1)
     entries[field].grid(row=i, column=1, padx=5, pady=5)
 ttk.Button(tab1, text="Add Log", command=lambda: add_single_log(entries), width=20).grid(row=len(fields), column=0, columnspan=2, pady=10)
