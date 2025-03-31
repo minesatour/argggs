@@ -20,6 +20,8 @@ DEFAULT_CONFIG = {"email": "yourburner@gmail.com", "password": "yourgmailapppass
 if os.path.exists(CONFIG_FILE):
     with open(CONFIG_FILE, "r") as f:
         config = json.load(f)
+    # Merge with defaults to handle missing keys
+    config = {**DEFAULT_CONFIG, **config}
 else:
     config = DEFAULT_CONFIG
     with open(CONFIG_FILE, "w") as f:
@@ -364,7 +366,7 @@ pass_entry.insert(0, config["password"])
 pass_entry.grid(row=1, column=1, padx=5, pady=5)
 ttk.Label(tab5, text="Town:").grid(row=2, column=0, padx=5, pady=5)
 town_entry = ttk.Entry(tab5)
-town_entry.insert(0, config["town"])
+town_entry.insert(0, config.get("town", "Glasgow"))  # Fallback to Glasgow if missing
 town_entry.grid(row=2, column=1, padx=5, pady=5)
 ttk.Button(tab5, text="Save Settings", command=lambda: save_settings(email_entry, pass_entry, town_entry), width=20).grid(row=3, column=0, columnspan=2, pady=10)
 
