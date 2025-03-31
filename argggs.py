@@ -264,9 +264,9 @@ notebook.add(tab3, text="Run Exploit")
 ttk.Label(tab3, text="Town:").pack(pady=5)
 town_entry = ttk.Entry(tab3)
 town_entry.pack(pady=5)
+ttk.Button(tab3, text="Start", command=lambda: run_exploit(town_entry, status_text)).pack(pady=5)  # Added Start button
 status_text = scrolledtext.ScrolledText(tab3, width=50, height=15)
 status_text.pack(pady=5)
-ttk.Button(tab3, text="Run", command=lambda: run_exploit(town_entry, status_text)).pack(pady=5)
 
 # Tab 4: View Logs
 tab4 = ttk.Frame(notebook)
